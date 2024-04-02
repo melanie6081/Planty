@@ -1,1 +1,47 @@
-<p>connexion works!</p>
+<div class="page">
+    <div class="header">
+        <div><img src="assets/images/logo-transparent-png.png" alt="Planty" class="logo"/></div>
+        <div class="bienvenue">Bienvenue</div>
+    </div>
+   
+    <div class="main">
+        <div class="form">
+            <h2>Log in</h2>
+            <form (ngSubmit)="onSubmit()" #myForm="ngForm" novalidate>
+                <div class="user-box">
+                    <div class="user">
+                        <!--<label for="pseudo">Nom d'utilisateur</label>-->
+                        <input type="text" name="pseudo" id="pseudo" [(ngModel)]="user.pseudo" placeholder="Nom d'utilisateur" required #pseudo="ngModel">
+                        <!-- La directive 'required' rend ce champ obligatoire -->
+                        <div *ngIf="pseudo.invalid && (pseudo.dirty || pseudo.touched)" class="error-message">
+                            <div *ngIf="pseudo.errors && 'required' in pseudo.errors">Ce champ est obligatoire.</div>
+                        </div>
+                    </div>
+                    <div class="password">
+                        <!--<label for="mdp">Mot de passe</label>-->
+                        <input type="password" name="mdp" id="mdp" [(ngModel)]="user.mdp" placeholder="Mot de passe" required #mdp="ngModel">
+                        <div *ngIf="mdp.invalid && (mdp.dirty || mdp.touched)" class="error-message">
+                            <div *ngIf="mdp.errors && 'required' in mdp.errors">Ce champ est obligatoire.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" [disabled]="!myForm.form.valid">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Connexion
+
+                </button>
+            </form>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+

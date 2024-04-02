@@ -1,0 +1,217 @@
+.page{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to bottom right, #2d6b34,rgba(120, 211, 175, 0.577));
+    
+}
+
+.header{
+    width: 100%;
+    height: 35%;
+    display:grid;
+    grid-template-rows: 70% 30%;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.logo{
+    margin-top: 5%;
+    width : 150px;
+    height : 150px;
+    border-radius : 75px;
+}
+
+.bienvenue{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 50px;
+    color:#244A23;
+}
+
+div{
+    text-align: center;
+    align-items: center;
+    vertical-align: bottom;
+}
+
+
+.main{
+    display: flex;
+    justify-content: left;
+    align-items: left;
+}
+
+.form {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    padding: 10%;
+    height: 55%;
+    width: 90%;
+    transform: translate(-50%, -50%);
+    background-color: aliceblue;
+    background-image: url(../../assets/images/fondPlanteForm2.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 15%;
+    opacity: 65%;
+  }
+
+  .form h2 {
+    margin: 0 0 30px;
+    padding: 0;
+    color: #244A23;
+    text-align: left;
+  }
+
+  .form .user-box {
+    position: relative;
+    margin-top: 10%;
+  }
+  
+  .form .user input, .form .password input {
+    width: 80%;
+    font-size: 16px;
+    color: #244A23;
+    margin-top: 10%;
+    margin-bottom: 5%;
+    border: none;
+    border-bottom: 1px solid rgba(65, 112, 93, 0.577);
+    outline: none;
+    background: transparent;
+  }
+
+  ::placeholder{
+    color:rgba(65, 112, 93, 0.577);
+  }
+
+  .form .user input:focus, .form .password input:focus {
+    border-bottom: 2px solid #244A23;
+  }
+
+  .error-message{
+    color: #244A23;
+    font-style: italic;
+    font-size: smaller;
+  }
+
+
+.form form button {
+  position: absolute;
+  top:68%;
+  right:25%;
+  display: inline-block;
+  padding: 10px 20px;
+  color: #244A23;
+  background: transparent;
+  border: transparent;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: .5s;
+  margin-top: 40px;
+  letter-spacing: 4px
+}
+
+.form button:hover {
+
+  background: #244A23;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #244A23,
+              0 0 25px #244A23,
+              0 0 50px #244A23,
+              0 0 100px #244A23;
+}
+
+.form form button:hover{
+    background-color: #244A23;
+    color:rgba(120, 211, 175, 0.577);
+}
+
+.form button span {
+  position: absolute;
+  display: block;
+}
+
+.form button span:nth-child(1) {
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #244A23);
+  animation: btn-anim1 4s linear infinite;
+}
+
+@keyframes btn-anim1 {
+  0% {
+    left: -100%;
+  }
+  50%,100% {
+    left: 100%;
+  }
+}
+
+.form button span:nth-child(2) {
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #244A23);
+  animation: btn-anim2 4s linear infinite;
+  animation-delay: 1s
+}
+
+@keyframes btn-anim2 {
+  0% {
+    top: -100%;
+  }
+  50%,100% {
+    top: 100%;
+  }
+}
+
+.form button span:nth-child(3) {
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, #244A23);
+  animation: btn-anim3 4s linear infinite;
+  animation-delay: 2s
+}
+
+@keyframes btn-anim3 {
+  0% {
+    right: -100%;
+  }
+  50%,100% {
+    right: 100%;
+  }
+}
+
+.form button span:nth-child(4) {
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, #244A23);
+  animation: btn-anim4 4s linear infinite;
+  animation-delay: 3s
+}
+
+@keyframes btn-anim4 {
+  0% {
+    bottom: -100%;
+  }
+  50%,100% {
+    bottom: 100%;
+  }
+}
+  
+
+
