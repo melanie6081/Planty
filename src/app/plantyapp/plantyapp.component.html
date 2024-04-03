@@ -1,1 +1,50 @@
-<p>plantyapp works!</p>
+
+
+<div class="page">
+
+  <div class="entete">
+    <div>{{pseudo}}</div>
+
+    <div> 
+      <button mat-icon-button class="deco" aria-label="deconnexion" (click)="deconnexion()">
+        <mat-icon>exit_to_app</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="maPlante">
+
+    <div>Température {{temperature}}°C
+      <round-progress
+      [current]="temperature"
+      [max]="max"
+      [color]="gradient ? 'url(#gradient)' : color"
+      [background]="background"
+      [radius]="radius"
+      [stroke]="stroke"
+      [semicircle]="semicircle"/>
+    </div>
+
+    <div>
+      <round-progress
+      [current]="humidite"
+      [max]="maxH"
+      [color]="gradientH ? 'url(#gradient)' : colorH"
+      [background]="backgroundH"
+      [radius]="radiusH"
+      [stroke]="strokeH"
+      [semicircle]="semicircleH"/>
+      Humidité {{humidite}}%
+    </div>
+
+    <div>
+      <div class="imgplante"><img src="../../assets/images/image-collée.png" alt="Ma plante"></div>
+      <div>Ma Plante</div>
+    </div>
+
+    <div>
+      <button mat-raised-button class="arroser" >Arroser</button>
+    </div>
+  </div>
+   
+</div>

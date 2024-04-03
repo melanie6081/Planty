@@ -1,0 +1,30 @@
+.page{
+    background-color:rgba(179, 213, 179, 0.311);
+    height: 100%;
+    width: 100%;
+    display: grid;
+}
+
+.entete{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    height:20%;
+    width:100%;
+}
+
+.maPlante{
+    display:grid;
+    height: 80%;
+    width: 100%;
+}
+
+.imgplante{
+    height: 60%;
+
+}
+
+.deco{
+    color:#244A23;
+}
+
+
