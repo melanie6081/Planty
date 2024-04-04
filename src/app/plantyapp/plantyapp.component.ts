@@ -139,8 +139,8 @@ export class PlantyappComponent implements OnInit {
 
   current = 27;
   max = 50;
-  stroke = 15;
-  radius = 180;
+  stroke = 12;
+  radius = 155;
   semicircle = true;
   
   color = '#45ccce';
@@ -152,7 +152,7 @@ export class PlantyappComponent implements OnInit {
   currentH = 50;
   maxH = 100;
   strokeH = 12;
-  radiusH = 160;
+  radiusH = 185;
   semicircleH = true;
   
   colorH = '#455874';

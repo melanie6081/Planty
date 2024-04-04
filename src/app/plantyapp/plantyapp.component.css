@@ -3,28 +3,107 @@
     height: 100%;
     width: 100%;
     display: grid;
+    grid-template-rows: 8% 92%;
 }
 
 .entete{
-    display:grid;
+    display:flex;
+    justify-content: space-between;
     grid-template-columns: 1fr 1fr;
-    height:20%;
+    height: 100%;
     width:100%;
+    align-items: center;
+}
+
+.pseudo{
+    display: flex;
+}
+
+.iconP{
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+.deco, .iconP{
+    color:#244A23;
+}
+
+.deco{
+    justify-items: end;
 }
 
 .maPlante{
     display:grid;
-    height: 80%;
+    height: 100%;
     width: 100%;
+    grid-template-rows: 5% 10% 65% 10%;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.recap{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-between;
+
+}
+
+.temp, .hum{
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100%;
+    width: 50%;
+    
+}
+
+.temp{
+    border-left-style: solid;
+    border-left-color:#244A23;
+}
+.hum{
+    border-right-style: solid;
+    border-right-color:#244A23;
+}
+
+.iconH, .iconT{
+    display:flex;
+    justify-content: space-between;
+    grid-template-columns: 1fr 1fr;
+}
+
+.iconsec, .iconhumide{
+    color: rgb(18, 143, 221);
+}
+.iconfroid{
+    color:rgb(113, 248, 241)
+}
+
+.iconchaud{
+    color:rgb(255, 95, 31);
 }
 
 .imgplante{
-    height: 60%;
+    height: 320px;
 
 }
 
-.deco{
-    color:#244A23;
+.indicateurs{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
 }
+
+.indH, .indT{
+    position: absolute;
+}
+
+.indT{
+    margin-top: 7.5%;
+}
+
 
 
