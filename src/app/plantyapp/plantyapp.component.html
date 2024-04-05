@@ -23,10 +23,10 @@
   <div class="maPlante">
     <div class="recap">
       <div class="hum">
-        <span>Humidité : {{humidite}}%</span>       
+        <span [matBadge]="alertehum" [matBadgeHidden]="alertehum==0" (click)="notifH()">Humidité : {{humidite}}%</span>       
       </div>
       <div class="temp">
-        <span>Température : {{temperature}}°C</span>
+        <span [matBadge]="alertetempC" [matBadgeHidden]="alertetempC==0" [matBadge]="alertetempF" [matBadgeHidden]="alertetempF==0" (click)="notifT()">Température : {{temperature}}°C</span>
       </div>
       
     </div>
@@ -65,13 +65,13 @@
     
    
 
-    <div>
+    <div class="maPlante2">
       <div><img class="imgplante" src="../../assets/images/image-collée.png" alt="Ma plante"></div>
-      <div>Ma Plante</div>
+      <div class="nomPlante">Ma Plante</div>
     </div>
 
-    <div>
-      <button mat-raised-button class="arroser" >Arroser</button>
+    <div class="boutonArroser">
+      <button mat-raised-button class="arroser" (click)="arroser()">Arroser</button>
     </div>
   </div>
    

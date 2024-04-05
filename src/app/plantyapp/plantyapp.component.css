@@ -4,6 +4,7 @@
     width: 100%;
     display: grid;
     grid-template-rows: 8% 92%;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .entete{
@@ -103,6 +104,24 @@
 
 .indT{
     margin-top: 7.5%;
+}
+
+.maPlante2{
+    display:flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+}
+
+.nomPlante{
+    font-size: 40px;
+    color:#244A23;
+}
+
+.boutonArroser{
+    display:flex;
+    justify-content: center; 
+    align-items: center;
 }
 
 

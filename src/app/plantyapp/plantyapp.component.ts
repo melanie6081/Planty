@@ -11,6 +11,8 @@ import {NgStyle} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {RoundProgressComponent} from 'angular-svg-round-progressbar';
 import { HttpClient } from '@angular/common/http';
+import { MatBadgeModule } from '@angular/material/badge';
+
 
 /*import {MqttModule,
   IMqttMessage,
@@ -24,7 +26,7 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-plantyapp',
   standalone: true,
-  imports: [MatButton, MatIconButton, MatIconModule, MatProgressBarModule, RoundProgressModule, RoundProgressComponent, NgStyle, FormsModule],
+  imports: [MatButton, MatIconButton, MatIconModule, MatProgressBarModule, RoundProgressModule, RoundProgressComponent, NgStyle, FormsModule, MatBadgeModule],
   templateUrl: './plantyapp.component.html',
   styleUrl: './plantyapp.component.css'
 })
@@ -33,16 +35,44 @@ export class PlantyappComponent implements OnInit {
 
   donnees: any;
   temperature: number= 0;
-  humidite: number= 0;
+  humidite: number= 80;
 
   message: string = "";
 
-  /*client: MqttService | undefined;
-  isConnection = false;
-  subscribeSuccess = false;*/
+  alertehum : number = 0;
+  alertetempC : number = 0;
+  alertetempF : number = 0;
 
-  constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient) { //, , private mqttService: MqttService
-    //this.client = this.mqttService;
+
+
+// barre d'avancement humidité
+  currentH = 50;
+  maxH = 100;
+  strokeH = 12;
+  radiusH = 185;
+  semicircleH = true;
+
+  colorH = '#455874';
+  backgroundH = '#eaeaea';
+  durationH = 800;
+  gradientH = false;
+  realCurrentH = 0;
+
+// barre d'avancement température
+  current = 27;
+  max = 50;
+  stroke = 12;
+  radius = 155;
+  semicircle = true;
+  
+  color = '#45ccce';
+  background = '#eaeaea';
+  duration = 800;
+  gradient = false;
+  realCurrent = 0;
+
+
+  constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient, private snackBar: MatSnackBar) { 
     this.pseudo = this.route.snapshot.params["pseudo"]
     console.log("user", this.pseudo)
     this.getItems();
@@ -67,99 +97,62 @@ export class PlantyappComponent implements OnInit {
       );
   }
 
-  /*private curSubscription: Subscription | undefined;
-
-  connection = {
-    hostname: 'broker.emqx.io',
-    port: 8083,
-    path: '/mqtt',
-   clean: true, // Retain session
-   connectTimeout: 4000, // Timeout period
-   reconnectPeriod: 4000, // Reconnect period
-   // Authentication information
-   username: 'colineauber@yahoo.fr',
-   password: 'plante',
-  }
-
-  receiveNews = '';
-
-
-  // Create a connection
- createConnection() {
-  // Connection string, which allows the protocol to specify the connection method to be used
-  // ws Unencrypted WebSocket connection
-  // wss Encrypted WebSocket connection
-  // mqtt Unencrypted TCP connection
-  // mqtts Encrypted TCP connection
-  try {
-    this.client?.connect(this.connection as IMqttServiceOptions)
- } catch (error) {
-    console.log('mqtt.connect error', error);
- }
-  this.client?.onConnect.subscribe(() => {
-    this.isConnection = true
-    console.log('Connection succeeded!');
- });
-  this.client?.onError.subscribe((error: any) => {
-    this.isConnection = false
-    console.log('Connection failed', error);
- });
-  this.client?.onMessage.subscribe((packet: any) => {
-    this.receiveNews = this.receiveNews.concat(packet.payload.toString())
-    console.log(`Received message ${packet.payload.toString()} from topic ${packet.topic}`)
- })
-}
-
-  subscription = {
-    topicH: 'colineauber@yahoo.fr/capteur/humidite',
-    qos: 0
-  }
-  
-  //, {topicT: 'colineauber@yahoo.fr/capteur/temperature', qos}];
-
-
-
-  doSubscribe() {
-    const { topicH, qos } = this.subscription
-    this.curSubscription = this.client?.observe(topicH, { qos } as IClientSubscribeOptions).subscribe((message: IMqttMessage) => {
-      this.subscribeSuccess = true
-      console.log('Subscribe to topics res', message.payload.toString())
-   })
-
-   }*/
-
   ngOnInit(): void {
-    setInterval(() => {this.getItems();}, 5000);
-    
+    setInterval(() => {this.getItems();}, 5000);   
+    setInterval(() => {this.alerte();}, )
   }
 
   deconnexion(){
     this.router.navigate(['']);
   }
 
-  current = 27;
-  max = 50;
-  stroke = 12;
-  radius = 155;
-  semicircle = true;
-  
-  color = '#45ccce';
-  background = '#eaeaea';
-  duration = 800;
-  gradient = false;
-  realCurrent = 0;
+  arroser(){
+    let message = "L'arrosage de votre plante a bien été enclenché"
+      this.popMessage(message)
+  }
 
-  currentH = 50;
-  maxH = 100;
-  strokeH = 12;
-  radiusH = 185;
-  semicircleH = true;
+  popMessage(message: string): void {
+    this.snackBar.open(message, "", { duration: 5000 });
+  }
+
+  alerte(){
+    this.alertehum  = 0;
+    this.alertetempC  = 0;
+    this.alertetempF  = 0;
+    if(this.humidite>70){
+      this.alertehum  = 1;
+    }
+    if(this.humidite<=15){
+      if (this.temperature>32){
+        this.alertetempC = 1;
+      }
+      if (this.temperature<=0){
+        this.alertetempC = 1;
+      }
+
+    }
+
+  }
+
+  notifH(){
+    if (this.alertehum==1){
+      let message = "!! Le niveau d'humidité de votre plante est trop élevé"
+      this.popMessage(message)
+    }
+  }
+
+  notifT(){
+    if (this.alertetempC==1){
+      let message = "!! Il fait trop chaud pour que nous puissions arroser vos plantes, mais la terre se fait sèche"
+      this.popMessage(message)
+    }
+    if (this.alertetempF){
+      let message = "!! Il fait trop chaud pour que nous puissions arroser vos plantes, mais la terre se fait sèche"
+      this.popMessage(message)
+    }
+  }
+
   
-  colorH = '#455874';
-  backgroundH = '#eaeaea';
-  durationH = 800;
-  gradientH = false;
-  realCurrentH = 0;
 
 
 }
